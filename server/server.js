@@ -9,7 +9,7 @@ const { Users } = require("./utils/users");
 const publicPath = path.join(__dirname, "../public");
 var users = new Users();
 app.use(express.static(publicPath));
-var room;
+const port = process.env.PORT || 3100;
 
 io.on("connection", function(socket) {
   socket.on("join", function(param, callback) {
@@ -67,6 +67,6 @@ io.on("connection", function(socket) {
   });
 });
 
-http.listen(3100, () => {
-  console.log("Connect to server via port 3100");
+http.listen(port, () => {
+  console.log("Connect to server via port ", port);
 });
