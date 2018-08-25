@@ -220,3 +220,14 @@ button:disabled {
   position: relative;
   left: 70%;
 }
+
+.hidden {
+  display: none;
+}
+.chat__sidebar a {
+  font-size: 25px;
+  text-decoration: none;
+  color: #e6eaee;
+  margin: 20px 10px;
+  text-align: left;
+}

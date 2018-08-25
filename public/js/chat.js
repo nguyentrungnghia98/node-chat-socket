@@ -1,5 +1,6 @@
 var socket = io();
 var param = jQuery.deparam(window.location.search);
+
 var scrollToBottom = () => {
   var messages = jQuery("#messages");
   var newMessage = messages.children("li:last-child");
@@ -64,9 +65,9 @@ document.getElementById("message-form").addEventListener("submit", e => {
   const text = document.getElementById("content-message").value;
   const chat = {
     from: param.name,
-    message: text,
-    createAt: new Date()
+    message: text
   };
+  document.getElementById("content-message").value = "";
   socket.emit("send message", chat);
 });
 
@@ -92,10 +93,20 @@ socket.on("connect", function() {
     if (err) {
       alert(err);
       window.location.href = "/";
-    } else {
-      console.log("No error");
     }
   });
+});
+socket.on("initRoomMessage", function(contents) {
+  if (contents) {
+    jQuery("#messages").html("");
+    contents.forEach(content => {
+      if (content.message) {
+        renderMessageUI(content);
+      } else {
+        renderLocationMessageUI(content);
+      }
+    });
+  }
 });
 socket.on("welcom message", function(message) {
   renderMessageUI(message);

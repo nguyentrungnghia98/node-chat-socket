@@ -20,13 +20,18 @@
             </div>
             <div class="form-field">
                 <label>Room name</label>
-                <input name="room" type="text" />
+                <select id="myList">
+                    <option id="createNewRoom" value="new">Create new room</option>
+                </select>
+                <input class="hidden" id="createInput" name="room" type="text" placeholder="Enter a room name" />
             </div>
             <div class="form-field">
-                <button>Join</button>
+                <button id="join">Join</button>
             </div>
         </form>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 
 </html>

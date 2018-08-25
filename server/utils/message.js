@@ -1,20 +1,20 @@
-var generateMessage = (from, message) =>{
-    return {
-        from,
-        message,
-        createAt: new Date()
-    };
+var generateMessage = (from, message) => {
+  return {
+    message,
+    from,
+    createAt: new Date()
+  };
 };
 
-var generateLocationMessage = (from, latitude, longitude) =>{
-    return {
-        from,
-        url: `https://www.google.com/maps?q=${latitude},${longitude}`,
-        createAt:  new Date()
-    }
+var generateLocationMessage = (from, latitude, longitude) => {
+  return {
+    url: `https://www.google.com/maps?q=${latitude},${longitude}`,
+    from,
+    createAt: new Date()
+  };
 };
 
 module.exports = {
-    generateMessage,
-    generateLocationMessage
-}
+  generateMessage,
+  generateLocationMessage
+};
